@@ -31,7 +31,6 @@ def pulled_jpg_images(old_dir):
             if '.jpg' in image:
                 images.append(image)
 
-    print(images)
     return images
 
 
@@ -42,7 +41,6 @@ def convert_jpg_to_png(images):
         updated_image = image.replace('jpg', 'png')
         converted_images.append(updated_image)
 
-    print(converted_images)
     return converted_images
 
 
