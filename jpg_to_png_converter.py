@@ -17,18 +17,10 @@ parser.add_argument('--n', default='./converted',
 args = parser.parse_args()
 file_open = args.o
 new_file = args.n
-print('file_open: {}'.format(file_open))
-print('new_file: {}'.format(new_file))
+# print('file_open: {}'.format(file_open))
+# print('new_file: {}'.format(new_file))
 
-# try:
-#     im1 = Image.open('./pokedex/bulbasaur.jpg')
-#     im1.show()
-# except NameError:
-#     print('Image name does not exist:')
-# except FileNotFoundError:
-#     print('File nout found:')
-
-# path = './pokedex/'
+path = './pokedex/'
 
 # CREATE FUNCTION
 images = []
@@ -38,4 +30,23 @@ for r, d, f in os.walk(file_open):
         if '.jpg' in image:
             images.append(image)
 
-print(images)
+# CREATE FUNCTION
+converted_images = []
+for image in images:
+    updated_image = image.replace('jpg', 'png')
+    converted_images.append(updated_image)
+
+print(converted_images)
+
+# Image.open('./pokedex/bulbasaur.jpg').show()
+
+# try:
+#     im1 = Image.open('./pokedex/bulbasaur.jpg')
+#     im1.show()
+# except NameError:
+#     print('Image name does not exist:')
+# except FileNotFoundError:
+#     print('File nout found:')
+
+# im = Image.open('./pokedex/bulbasaur.jpg')
+# im.save('bulbasaur.png')
