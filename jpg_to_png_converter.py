@@ -10,13 +10,13 @@ parser = argparse.ArgumentParser(
     description='Open a file, convert images from JPG format to PNG and save into a new file!')
 
 parser.add_argument('--o', default='./pokedex',
-                    help='This is the file to be opened which contains jpg file format images to be converted to png.')
-parser.add_argument('--n', default='./converted',
-                    help='This is the file to be saved which contains images that have already been converted from jpg file format images to png.')
+                    help='This is the directory to be opened which contains jpg file format images to be converted to png.')
+parser.add_argument('--n', default='./converted/',
+                    help='This is the directory to be saved which contains images that have already been converted from jpg file format images to png.')
 
 args = parser.parse_args()
 file_open = args.o
-new_file = args.n
+new_directory = args.n
 # print('file_open: {}'.format(file_open))
 # print('new_file: {}'.format(new_file))
 
@@ -36,17 +36,14 @@ for image in images:
     updated_image = image.replace('jpg', 'png')
     converted_images.append(updated_image)
 
-print(converted_images)
+# CREATE FUNCTION
+if not os.path.exists(new_directory):
+    os.makedirs(new_directory)
 
-# Image.open('./pokedex/bulbasaur.jpg').show()
+# CREATE FUNCTION
+# complete_path = os.path.join('./converted', converted_images[0])
+# file1 = open(complete_path, 'w')
 
-# try:
-#     im1 = Image.open('./pokedex/bulbasaur.jpg')
-#     im1.show()
-# except NameError:
-#     print('Image name does not exist:')
-# except FileNotFoundError:
-#     print('File nout found:')
-
-# im = Image.open('./pokedex/bulbasaur.jpg')
-# im.save('bulbasaur.png')
+for image in converted_images:
+    complete_path = os.path.join(new_directory, image)
+    im = open(complete_path, 'w+')
